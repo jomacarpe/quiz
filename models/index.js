@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 var url, storage;
 if(!process.env.DATABASE_URL){
 	url= "sqlite:///";
-	storage= "quiz.sqlite1";
+	storage= "quiz1.sqlite";
 }else {
 	url=process.env.DATABASE_URL;
 	storage=process.env.DATABASE_STORAGE || "";
