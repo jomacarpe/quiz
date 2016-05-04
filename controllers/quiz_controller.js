@@ -6,7 +6,8 @@ var models = require('../models');
 exports.index = function(req, res, next) {
 	if(req.query.search){
 		var search=req.query.search;
-		models.Quiz.findAll({where:{question :""}})
+		search1 = "%" + search.replace("","%") +"%";
+        models.Quiz.findAll({where: ["question like ?", search1]})
 		.then(function(quizzes) {
 			res.render('quizzes/resultado_busqueda.ejs', { quizzes: quizzes,search:search});
 		})
