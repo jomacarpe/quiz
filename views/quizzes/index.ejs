@@ -7,3 +7,17 @@
      </tr> 
   <% } %>
 </table>
+<p>
+
+<form method="get" action="/quizzes">        
+    <p>
+      Busc<%= search %>ar
+    </p>
+
+    <p>
+      <input type="text" name="search" value="<%= search %>" placeholder="Respuesta" />
+
+      <input type="submit" value="Comprobar">
+    </p>
+  </form>
+  </p>

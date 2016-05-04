@@ -4,15 +4,27 @@ var models = require('../models');
 
 // GET /quizzes
 exports.index = function(req, res, next) {
-	models.Quiz.findAll()
+	if(req.query.search){
+		var search=req.query.search;
+		models.Quiz.findAll({where:{question :""}})
 		.then(function(quizzes) {
-			res.render('quizzes/index.ejs', { quizzes: quizzes});
+			res.render('quizzes/resultado_busqueda.ejs', { quizzes: quizzes,search:search});
 		})
 		.catch(function(error) {
 			next(error);
 		});
-};
 
+	}else{
+		var search = req.query.search;
+
+	models.Quiz.findAll()
+		.then(function(quizzes) {
+			res.render('quizzes/index.ejs', { quizzes: quizzes,search:search});
+		})
+		.catch(function(error) {
+			next(error);
+		});}
+};
 
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
