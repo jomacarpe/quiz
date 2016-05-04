@@ -3,7 +3,7 @@ var path = require('path');
 // Cargar Modelo ORM
 var Sequelize = require('sequelize');
 
-// Usar BBDD SQLite:
+// Usar BBDD SQLite: 
 var url, storage;
 if(!process.env.DATABASE_URL){
 	url= "sqlite:///";
