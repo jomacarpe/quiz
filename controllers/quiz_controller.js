@@ -14,10 +14,19 @@ exports.index = function(req, res, next) {
 		.catch(function(error) {
 			next(error);
 		});
-
+	}else if(req.params.format=="json"){
+	    models.Quiz.findAll()
+		.then(function(quizzes) {
+			res.send(JSON.stringify(quizzes));
+		})
+		.catch(function(error) {
+			next(error);
+		});
+	}else if(req.params.format!=="json" && req.params.format!==undefined){
+		res.send('Not Acceptable');
 	}else{
-		var search = req.query.search;
-
+		var search1=req.params.format;
+		var search=req.query.search;
 	models.Quiz.findAll()
 		.then(function(quizzes) {
 			res.render('quizzes/index.ejs', { quizzes: quizzes,search:search});
@@ -29,6 +38,19 @@ exports.index = function(req, res, next) {
 
 // GET /quizzes/:id
 exports.show = function(req, res, next) {
+	if(req.params.format=="json"){
+	models.Quiz.findById(req.params.quizId)
+		.then(function(quizzes) {
+			res.send(JSON.stringify(quizzes));
+		})
+		.catch(function(error) {
+			next(error);
+		});
+
+	}else if(req.params.format!=="json" && req.params.format!==undefined){
+		res.send('Not Acceptable');
+		
+	}else{
 	models.Quiz.findById(req.params.quizId)
 		.then(function(quiz) {
 			if (quiz) {
@@ -42,7 +64,7 @@ exports.show = function(req, res, next) {
 		})
 		.catch(function(error) {
 			next(error);
-		});
+		});}
 };
 
 
