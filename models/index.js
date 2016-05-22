@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 var url, storage;
 if(!process.env.DATABASE_URL){
 	url= "sqlite:///";
-	storage= "quiz1.sqlite";
+	storage= "quiz.sqlite";
 }else {
 	url=process.env.DATABASE_URL;
 	storage=process.env.DATABASE_STORAGE || "";
@@ -26,7 +26,7 @@ sequelize.sync()
         return Quiz.count()
                 .then(function (c) {
                     if (c === 0) {   // la tabla se inicializa solo si está vacía
-                        return Quiz.bulkCreate([ {question: 'Capital de Francia',   answer: 'Roma'},
+                        return Quiz.bulkCreate([ {question: 'Capital de Francia',   answer: 'Paris'},
                                                  {question: 'Capital de Portugal', answer: 'Lisboa'}
                                               ])
                                    .then(function() {

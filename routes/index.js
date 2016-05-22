@@ -6,8 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 router.get('/author', function(req, res, next) {
-  res.render('author'/*, { title: 'Quiz' }*/);
+  res.render('author');
 });
+router.param('quizId', quizController.load);
+
 router.get('/quizzes.:format?',                     quizController.index);
 router.get('/quizzes/:quizId(\\d+).:format?',       quizController.show);
 router.get('/quizzes/:quizId(\\d+)/check', quizController.check);
