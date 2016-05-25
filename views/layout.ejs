@@ -2,25 +2,66 @@
   <head>
     <title>Preguntas</title>
     <link rel='icon' href='indice.ico' type="image/x-icon"/> 
+   <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
   	<header>
   		<h2>Quiz: el juego de las preguntas</h2>
   	</header>
+    <section class='nav'>
     <nav>
     	<a href="/">Inicio</a>
       <a href="/quizzes">Preguntas</a>
       <a href="/author">Autor</a>
     </nav>
+  </section>
     <section>
-    	<div><%- body %></div>
-    </section>
+            <% if (messages.info) { %>
+               <article id='flashinfo'>
+                 <h3>Información de interés:</h3>
+                 <ul>
+                    <% for (var i in messages.info) { %>
+                      <li> <%= messages.info[i] %> </li>
+                    <% } %>
+                 </ul>
+               </article>
+            <% } %>
+
+            <% if (messages.success) { %>
+               <article id='flashsuccess'>
+                 <h3>Tareas completadas con éxito:</h3>
+                 <ul>
+                    <% for (var i in messages.success) { %>
+                       <li> <%= messages.success[i] %> </li>
+                    <% } %>
+                 </ul>
+               </article>
+            <% } %>
+
+            <% if (messages.error) { %>
+               <article id='flasherror'>
+                 <h3>Errores encontrados:</h3>
+                 <ul>
+                    <% for (var i in messages.error) { %>
+                      <li> <%= messages.error[i] %> </li>
+                    <% } %>
+                 </ul>
+               </article>
+            <% } %>
+       </section>
+
+      <section class="main">
+        <div>
+          <%- body %>
+        </div>
+      </section>
+       <section class='nav'>
     <footer>
     	<a href="http://es.wikipedia.org/wiki/Quiz">¿Que es Quiz?</a>
     	<a href="http://github.com/jomacarpe">Enlace a GitHub</a>
       <a href="/author">Autor</a>
 
     </footer>
-
+      </section>
    </body>
   </html>

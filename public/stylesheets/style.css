@@ -1,8 +1,130 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
 a {
   color: #00B7FF;
+}
+body                 { font: 16px Georgia, serif; 
+                       color: white;
+                       border-radius: 64px 64px 64px 64px;
+                     }
+
+.page                 { margin: 2% auto; 
+                        color: white;}
+
+.main{ border: 1px solid #999; 
+        padding: 1%;
+        margin-bottom: 1px;
+        color: black;
+        background: #eee;
+        border-radius: 64px 64px 64px 64px;
+  }
+.nav{padding: 5px;
+	 background: coral;
+	 border: 4px;
+	 border-color: green;
+	 display:block;
+	 border-radius: 10px 10px 10px 10px;
+}
+h2{
+	color:black;
+}
+a                    { color: black; }
+
+
+section > div        { padding: 20px; }
+
+header               { text-align: center;}
+nav                  { text-align: center;}
+section              { text-align: left;}
+footer               { text-align: center;}
+
+nav a                { margin: 0px 10px 0px 0px;}
+
+#flashinfo {
+  width: auto;
+  border: 2px solid blue;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  color: #000; 
+  border-radius: 10px 10px 10px 10px;
+
+}
+
+#flashinfo h3 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #00c;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#flashinfo ul li {
+    margin: 5px 5px 5px 15px;
+    font-size: 12px;
+    list-style: square; 
+}
+
+
+#flashsuccess {
+  width: auto;
+  border: 2px solid green;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  color: #000; 
+  border-radius: 10px 10px 10px 10px;
+
+}
+
+#flashsuccess h3 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #0c0;
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+#flashsuccess ul li {
+    margin: 5px 5px 5px 15px;
+    font-size: 12px;
+    list-style: square; 
+}
+
+#flasherror {
+  width: auto;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  color: #000; 
+  border-radius: 10px 10px 10px 10px;
+
+}
+
+#flasherror h3 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    border-radius: 10px 10px 10px 10px;
+
+}
+
+#flasherror ul li {
+    margin: 5px 5px 5px 15px;
+    font-size: 12px;
+    list-style: square;
 }
