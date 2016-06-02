@@ -20,8 +20,8 @@ var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 var Comment = sequelize.import(path.join(__dirname,'comment'));
 var User = sequelize.import(path.join(__dirname,'user'));
 // Relaciones entre modelos
-Comment.belongsTo(Quiz);
-Quiz.hasMany(Comment);
+Quiz.hasMany(Comment, {foreignKey: 'QuizId'});
+Comment.belongsTo(Quiz, {foreignKey: 'QuizId'});
 // Relacion 1 a N entre User y Quiz:
 User.hasMany(Quiz, {foreignKey: 'AuthorId'});
 Quiz.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'});

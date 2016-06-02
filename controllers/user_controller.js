@@ -46,7 +46,7 @@ exports.new = function(req, res, next) {
 // POST /users
 exports.create = function(req, res, next) {
     var user = models.User.build({ username: req.body.user.username,
-                                   password: req.body.user.password
+                                   password: req.body.user.password,
                                 });
 
     // El login debe ser unico:
