@@ -11,7 +11,7 @@ module.exports = {
              text:      { type: Sequelize.STRING,   unique: true,
                           validate: { notEmpty: {msg: "Falta Comentario"} } },
              createdAt: { type: Sequelize.DATE,     allowNull: false },
-             updatedAt: { type: Sequelize.DATE,     allowNull: false }
+             updatedAt: { type: Sequelize.DATE,     allowNull: false } 
            },
            { sync: {force: true}
            }

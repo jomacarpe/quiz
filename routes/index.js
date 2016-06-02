@@ -5,6 +5,10 @@ var commentController = require('../controllers/comment_controller');
 var userController = require('../controllers/user_controller');
 var sessionController = require('../controllers/session_controller');
 /* GET home page. */
+
+var multer  = require('multer');
+var upload = multer({ dest: './uploads/' });
+
 router.get('/', function(req, res, next) {
   res.render('index');
 });
@@ -27,13 +31,15 @@ router.get('/quizzes/:quizId(\\d+)',       	quizController.show);
 router.get('/quizzes/:quizId(\\d+)/check', 	quizController.check);
 router.get('/quizzes/new',                 	sessionController.loginRequired, 
 											quizController.new);
-router.post('/quizzes',                    	sessionController.loginRequired, 
+router.post('/quizzes',                    	sessionController.loginRequired,
+                                            upload.single('image'), 
 											quizController.create);
 router.get('/quizzes/:quizId(\\d+)/edit',  	sessionController.loginRequired, 
 										   	quizController.ownershipRequired, 
 										   	quizController.edit);
 router.put('/quizzes/:quizId(\\d+)',       	sessionController.loginRequired, 
-											quizController.ownershipRequired, 
+											quizController.ownershipRequired,
+											upload.single('image'), 
 											quizController.update);
 router.delete('/quizzes/:quizId(\\d+)',    	sessionController.loginRequired, 
 											quizController.ownershipRequired, 
