@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       { username: {
             type: DataTypes.STRING,
             unique: true,
-            validate: { notEmpty: { msg: "Falta username" }}
+            validate: { notEmpty: { msg: "Falta username" }} //datos de la BBDD que se modifican desde el controller
         },
         password: {
             type: DataTypes.STRING,
@@ -25,6 +25,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
+        },
+      { instanceMethods: {
+          verifyPassword: function (password) {
+            return encryptPassword(password, this.salt) === this.password;
+          }
+        }    
       });
 };
 

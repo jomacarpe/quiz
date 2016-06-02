@@ -5,3 +5,4 @@ module.exports = function(sequelize, DataTypes) {
              }
              });
 };
+//datos de la BBDD que se modifican desde el controller
