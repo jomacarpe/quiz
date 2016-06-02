@@ -18,6 +18,7 @@
       <tr>
          <td> <%= users[i].username %>  </td>
          <td> <%= users[i].isAdmin ? "Si" : "No" %> </td>
+         <% if (session.user) { %>
          <td> <a href="/users/<%= users[i].id %>" ><button> Ver </button> </a></td>
          <td> <a href="/users/<%= users[i].id %>/edit"> <button> Editar </button> </a></td>
          <td> <a href="/users/<%= users[i].id %>?_method=DELETE" 
@@ -27,13 +28,16 @@
       </tr>
     <%  }; %>
   </tbody>
+    <%  }; %>
 </table>
 
 <footer>
   <nav> 
+  <% if (session.user) { %>
       <a href="/users/new" > 
           <button> Crear nuevo Usuario </button>
       </a> 
+      <% }; %>
   </nav>
 </footer>
 <section>

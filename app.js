@@ -17,14 +17,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(partials());
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'indice.ico')));
 app.use(logger('dev')); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+//
 app.use(session({secret: "Quiz 2016",
                  resave: false,
                  saveUninitialized: true}));
+//
 app.use(methodOverride('_method', {methods: ["POST", "GET"]}));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));

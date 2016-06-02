@@ -21,9 +21,20 @@ var authenticate = function(login, password) {
         });
 }; 
 
-
+exports.loginRequired = function (req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/session?redir=' + (req.param('redir') || req.url));
+    }
+};
 
 // GET /session   -- Formulario de login
+//
+// Paso como parametro el valor de redir (es una url a la que 
+// redirigirme despues de hacer login) que me han puesto en la 
+// query (si no existe uso /).
+//
 exports.new = function(req, res, next) {
 
     var redir = req.query.redir || 
@@ -49,17 +60,17 @@ exports.create = function(req, res, next) {
     authenticate(login, password)
         .then(function(user) {
             if (user) {
-    	        // Crear req.session.user y guardar campos id y username
-    	        // La sesión se define por la existencia de: req.session.user
-    	        req.session.user = {id:user.id, username:user.username};
+                // Crear req.session.user y guardar campos id y username
+                // La sesión se define por la existencia de: req.session.user
+                req.session.user = {id:user.id, username:user.username, isAdmin:user.isAdmin};
 
                 res.redirect(redir); // redirección a redir
             } else {
                 req.flash('error', 'La autenticación ha fallado. Reinténtelo otra vez.');
                 res.redirect("/session?redir="+redir);
             }
-		})
-		.catch(function(error) {
+        })
+        .catch(function(error) {
             req.flash('error', 'Se ha producido un error: ' + error);
             next(error);        
     });
