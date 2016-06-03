@@ -30,10 +30,10 @@
        for (var j in usuarios) {
               if(usuarios[j].id===comment.AuthorId){usuarioelegido=usuarios[j].username}}
                %>
-           <li> <%= comment.text %></li>
+           <li> <%= comment.text %> Autor: <%= usuarioelegido %></li>
        <% } else if (session.user && 
          (session.user.isAdmin || (quiz.AuthorId === session.user.id))) { %>
-           <li> <%= comment.text %>Autor: <%= usuarioelegido %> 
+           <li> <%= comment.text %> 
             </li>
            <a href="/quizzes/<%= quiz.id %>/comments/<%= comment.id %>/accept?_method=PUT">
               <button>Aceptar</button>
