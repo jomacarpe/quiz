@@ -73,10 +73,13 @@ exports.show = function(req, res, next) {
 		
 	}else{
 				var answer = req.query.answer || '';
+        models.User.findAll()
+           .then(function(usuarios) {
 				res.render('quizzes/show', {quiz: req.quiz,
-											answer: answer});
-			}
-};
+											answer: answer,
+                      usuarios:usuarios});
+			});
+}};
 
 // GET /quizzes/:id/check
 exports.check = function(req, res) {

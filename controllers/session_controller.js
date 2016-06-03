@@ -2,6 +2,14 @@ var models = require('../models');
 var Sequelize = require('sequelize');
 var url = require('url');
 
+exports.autologout = function(req, res, next) {
+         if (req.session.user ) {
+            if (req.session.user.expires &&(req.session.user.expires < Date.now())) {
+               delete req.session.user;
+           } else {
+              req.session.user.expires = Date.now()+12000;
+} }
+next(); };
 
 exports.loginRequired = function (req, res, next) {
     if (req.session.user) {
