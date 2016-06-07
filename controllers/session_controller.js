@@ -7,7 +7,7 @@ exports.autologout = function(req, res, next) {
             if (req.session.user.expires &&(req.session.user.expires < Date.now())) {
                delete req.session.user;
            } else {
-              req.session.user.expires = Date.now()+12000;
+              req.session.user.expires = Date.now()+120000;
 } }
 next(); };
 

@@ -38,10 +38,10 @@ exports.ownershipRequired = function(req, res, next){
 exports.index = function(req, res, next) {
 	if(req.query.search){
 		var search=req.query.search;
-		search1 = "%" + search.replace("","%") +"%";
-        models.Quiz.findAll({where: ["question like ?", search1]})
+      var searchAux = req.query.search.replace("","%");
+      models.Quiz.findAll({where: {question: {$like: ('%' + searchAux + '%')}},order: ['question']})
 		.then(function(quizzes) {
-			res.render('quizzes/resultado_busqueda.ejs', { quizzes: quizzes,search:search});
+			res.render('quizzes', { quizzes: quizzes,search:search});
 		})
 		.catch(function(error) {
 			next(error);

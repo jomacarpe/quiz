@@ -50,8 +50,8 @@ router.delete('/users/:userId(\\d+)',   sessionController.autologout, sessionCon
 										userController.destroy);  // borrar cuenta
 
 // Definición de rutas de /quizzes
-router.get('/quizzes',                     sessionController.autologout, 	quizController.index);
-router.get('/quizzes/:quizId(\\d+)',       	sessionController.autologout, quizController.show);
+router.get('/quizzes.:format?',                     sessionController.autologout, 	quizController.index);
+router.get('/quizzes/:quizId(\\d+).:format?',       	sessionController.autologout, quizController.show);
 router.get('/quizzes/:quizId(\\d+)/check', 	sessionController.autologout, quizController.check);
 router.get('/quizzes/new',                 	sessionController.autologout, sessionController.loginRequired, 
 											quizController.new);
